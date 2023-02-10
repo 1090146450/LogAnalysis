@@ -7,11 +7,11 @@
 
 </head>
 <body >
-    <div id="d6f2246728fd43c998a6ab337e1179e9" class="chart-container" style="width:900px; height:500px; "></div>
+    <div id="ccac114541d74b4ea53be24c4993b2a6" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-        var chart_d6f2246728fd43c998a6ab337e1179e9 = echarts.init(
-            document.getElementById('d6f2246728fd43c998a6ab337e1179e9'), 'white', {renderer: 'canvas'});
-        var option_d6f2246728fd43c998a6ab337e1179e9 = {
+        var chart_ccac114541d74b4ea53be24c4993b2a6 = echarts.init(
+            document.getElementById('ccac114541d74b4ea53be24c4993b2a6'), 'white', {renderer: 'canvas'});
+        var option_ccac114541d74b4ea53be24c4993b2a6 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -37,8 +37,8 @@
     "series": [
         {
             "type": "line",
-            "name": "\u5e27\u7387\u53d8\u5316",
-            "connectNulls": false,
+            "name": "CPU",
+            "connectNulls": true,
             "xAxisIndex": 0,
             "symbolSize": 4,
             "showSymbol": true,
@@ -11485,15 +11485,104 @@
             },
             "zlevel": 0,
             "z": 0
+        },
+        {
+            "type": "line",
+            "name": "CPU1",
+            "connectNulls": true,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "2022-06-09 00:00:06",
+                    1
+                ],
+                [
+                    "2022-06-09 00:00:06",
+                    2
+                ],
+                [
+                    "2022-06-09 00:00:07",
+                    3
+                ],
+                [
+                    "2022-06-09 00:00:08",
+                    4
+                ],
+                [
+                    "2022-06-09 00:00:08",
+                    5
+                ],
+                [
+                    "2022-06-09 00:00:08",
+                    6
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8
+            },
+            "logBase": 10,
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "markPoint": {
+                "label": {
+                    "show": true,
+                    "position": "inside",
+                    "color": "#fff",
+                    "margin": 8
+                },
+                "data": [
+                    {
+                        "name": "\u6700\u5927\u503c",
+                        "type": "max"
+                    },
+                    {
+                        "name": "\u6700\u5c0f\u503c",
+                        "type": "min"
+                    }
+                ]
+            },
+            "markLine": {
+                "silent": false,
+                "precision": 2,
+                "label": {
+                    "show": true,
+                    "margin": 8
+                },
+                "data": [
+                    {
+                        "name": "\u5e73\u5747\u503c",
+                        "type": "average"
+                    }
+                ]
+            },
+            "zlevel": 0,
+            "z": 0
         }
     ],
     "legend": [
         {
             "data": [
-                "\u5e27\u7387\u53d8\u5316"
+                "CPU",
+                "CPU1"
             ],
             "selected": {
-                "\u5e27\u7387\u53d8\u5316": true
+                "CPU": true,
+                "CPU1": true
             },
             "show": true,
             "padding": 5,
@@ -14439,9 +14528,8 @@
     "title": [
         {
             "show": true,
-            "text": "\u672a\u6765\u4e00\u5468\u6c14\u6e29\u53d8\u5316",
+            "text": "LOG",
             "target": "blank",
-            "subtext": "\u7eaf\u5c5e\u865a\u6784",
             "subtarget": "blank",
             "padding": 5,
             "itemGap": 10,
@@ -14511,9 +14599,21 @@
                 "icon": {}
             }
         }
+    },
+    "dataZoom": {
+        "show": true,
+        "type": "slider",
+        "showDetail": true,
+        "showDataShadow": true,
+        "realtime": true,
+        "start": 0,
+        "end": 100,
+        "orient": "horizontal",
+        "zoomLock": false,
+        "filterMode": "filter"
     }
 };
-        chart_d6f2246728fd43c998a6ab337e1179e9.setOption(option_d6f2246728fd43c998a6ab337e1179e9);
+        chart_ccac114541d74b4ea53be24c4993b2a6.setOption(option_ccac114541d74b4ea53be24c4993b2a6);
     </script>
 </body>
 </html>
