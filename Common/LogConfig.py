@@ -44,8 +44,15 @@ class RunLogChart:
                 fps_0.y_axis_config(name=fps_title[i], y_data=fps[i * 2 + 1])
                 fps_0.set_global(title=fps_title[i])
                 axis_list.append(fps_0.get_pyechart())
-        print(axis_list)
+        if len(cam[0]) == len(cam[1]) == len(cam[2]) == len(cam[3]) == len(cam[4]):
+            cam_0 = pyechart.Graphical()
+            cam_0.x_axis_config(cam[0])
+            cam_0.y_axis_config(name="DMS0", y_data=cam[1])
+            cam_0.y_axis_config(name="OMS1", y_data=cam[2])
+            cam_0.y_axis_config(name="OMS2", y_data=cam[3])
+            cam_0.y_axis_config(name="OMS3", y_data=cam[4])
+            cam_0.set_global(title="CAM VOLTAGE")
+            axis_list.append(cam_0.get_pyechart())
         return axis_list
 
 
-rn = RunLogChart("D:/02_Program/Log_Analysis/invo-log.txt", "A88分析.html")

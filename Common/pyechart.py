@@ -18,7 +18,7 @@ class Graphical:
     def y_axis_config(self, y_data, *args, name, **kwargs) -> None:
         if name == "":
             raise Exception("请输入数据名称")
-        self.c.add_yaxis(y_axis=y_data, is_connect_nones=True, series_name=name,
+        self.c.add_yaxis(y_axis=y_data, is_connect_nones=False, series_name=name,
                          markpoint_opts=options.MarkPointOpts(  # 设置最大最小值
                              # 标记点的数据
                              data=[

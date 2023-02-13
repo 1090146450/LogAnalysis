@@ -1,6 +1,5 @@
-# 像图中添加坐标  向X轴添加数据0,2,6  向Y轴添加数据0,3,100
-from Common.ReadLog import readlog
-from Common.pyechart import Graphical
+from Common.LogConfig import RunLogChart
 
-e = 8 / 2
-print(e)
+print("请等待至弹窗消失即可")
+rl = RunLogChart("./DMS_长稳测试--20230207.log", "A88顶配LOG分析.html")
+
