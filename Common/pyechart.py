@@ -46,7 +46,7 @@ class Graphical:
                                *args,
                                **kwargs)
 
-    def Html_Storage(self, name="A88Log分析.html") -> None:
+    def Html_Storage(self, name="Log分析.html") -> None:
         """html文件存储位置不写则默认当前目录下"""
         self.c.render(name)
 

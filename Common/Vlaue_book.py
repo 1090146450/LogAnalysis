@@ -10,7 +10,7 @@ class Value_book:
         data = List_Value[2 * (self + 1)]
         if "CPU OCCUPY" in data:
             Cpu_01.append(List_Value[2 * (self + 1) - 1])
-            Cpu_02 = [["Total", "Cpu0", "Cpu1", "Cpu2","Cpu3"],
+            Cpu_02 = [["Total", "Cpu0", "Cpu1", "Cpu2", "Cpu3"],
                       ["Total.(\d+)%.", "Cpu0.(\d+)%.", "Cpu1.(\d+)%.", "Cpu2.(\d+)%.", "Cpu3.(\d+)%."]]
             for x in range(0, 5):
                 if Cpu_02[0][x] in data:
@@ -22,9 +22,9 @@ class Value_book:
     def Fps(self, List_Value):
         Fps_01 = [[], [], [], []]
         data = List_Value[2 * (self + 1)]
-        Fps_List = ["dms0 RUNNING", "oms1 RUNNING", "oms2 RUNNING", "oms3 RUNNING"]
-        Fps_List_name = ["dms0 RUNNING: (.*\d*.*?) fps", "oms1 RUNNING: (.*\d*.*?) fps", "oms2 RUNNING: (.*\d*.*?) fps",
-                         "oms3 RUNNING: (.*\d*.*?) fps"]
+        Fps_List = ["[dms0 ", "[oms1 ", "[oms2 ", "[oms3 "]
+        Fps_List_name = ["dms0.*?(\d*?) fps", "oms1.*?(\d*?) fps", "oms2.*?(\d*?) fps",
+                         "oms3.*?(\d*?) fps"]
         for x in range(0, 4):
             if Fps_List[x] in data:
                 Fps_01[x].append(List_Value[2 * (self + 1) - 1])
