@@ -1,51 +1,74 @@
-import glob
+import datetime
 import os
 import time
 
 from Common.LogConfig import RunLogChart
 
 
-def ma(name):
-    RunLogChart(name)
-    with open('DMS-常温分析.html', "a") as f:
-        str = """<!doctype html>
+def ma(name, time_da):
+    RunLogChart(name, time_da)
+    with open(f'DMS-常温分析{time_da}.html', "a") as f:
+        str_t = f"""<!doctype html>
     <html lang="zh-CN">
         <head>
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>DMS-常温分析</title>
+            <title>DMS_常温分析</title>
         </head>
         <body>
             <div>
-            <iframe frameborder="0" src="list.html" width="100%" height="3250px"></iframe>
-                <iframe frameborder="0" src="cpu.html" width="100%" height="625px"></iframe>
+            <iframe frameborder="0" src="fps_config{time_da}.html" width="100%" height="3250px"></iframe>
+                <iframe frameborder="0" src="cpu_config{time_da}.html" width="100%" height="625px"></iframe>
             </div>
         </body>
     </html>"""
-        f.write(str)
+        f.write(str_t)
 
 
 while True:
-    name = input("请输入要解析的DMS-LOG文件名称")
-    if name == "exit":
+    time_da = datetime.datetime.now().strftime("%M%S")
+    name = input("请输入执行操作:\n"
+                 "1:执行第一个.log文件\n"
+                 "2:查看并输入.log文件序号运行\n"
+                 "0:退出\n")
+    log_all = []
+    for i in os.listdir(os.getcwd()):
+        if i[-3:] == "log":
+            log_all.append(i)
+    if name == "0":
         break
-    if name == "1":
-        name = os.listdir(os.getcwd())
-        for i in name:
-            if i[-3:] == "log":
-                print("找到文件",i,",开始解析")
-                ma(i)
-                print("请打开 DMS-常温分析.html 文件查看")
-                time.sleep(6)
-                break
-        else:
-            print("未找到以log结尾的文件，3S后退出")
-            time.sleep(3)
+    elif len(log_all) == 0:
+        print("未找到.log文件，3S后退出")
+        time.sleep(3)
         break
-    if isinstance(name, str) and glob.glob(name):
-        ma(name)
-        print("请打开 DMS-常温分析.html 文件查看")
+    elif name == "1":
+        print(f"开始执行文件{log_all[0]}......")
+        try:
+            ma(log_all[0], time_da)
+        except Exception as e:
+            print(f"执行失败！原因{e}")
+            time.sleep(6)
+        print(f"执行完毕请查看:DMS-常温分析{time_da}.html")
         time.sleep(6)
-    else:
-        print("请输入正确的地址，或者输入1，来默认读取第一个log后缀文件,或者输入exit退出")
+        break
+    elif name == "2":
+        for i in range(len(log_all)):
+            print(f"{i}.{log_all[i]}")
+        name = input("请输入序号进行运行\n")
+        try:
+            name = int(name)
+        except Exception as e:
+            print("请输入数字！")
+        if name not in range(len(log_all)):
+            print("您输入的序列表错误")
+            break
+        print(f"开始执行文件{log_all[name]}......")
+        try:
+            ma(log_all[name], time_da)
+        except Exception as e:
+            print(f"执行失败！原因{e}")
+            time.sleep(6)
+        print(f"执行完毕请查看:DMS-常温分析{time_da}.html")
+        time.sleep(6)
+        break
